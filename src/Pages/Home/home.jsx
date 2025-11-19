@@ -1,70 +1,20 @@
 import { useState } from 'react';
+import CalendarDay from '../../Components/CalendarDay/CalendarDay';
+import AscensionItem from '../../Components/AscensionItem/AscensionItem';
 import './home.css';
 
 // Image URLs from Figma
 const imgCoins = "https://www.figma.com/api/mcp/asset/8c501c74-de50-4cfc-996c-1719498c5c21";
 const imgDiamonds = "https://www.figma.com/api/mcp/asset/e86bfb14-14ee-4444-b68b-cc1c5fb140f9";
-const imgFlame = "https://www.figma.com/api/mcp/asset/af99dedf-7567-4c23-b650-8987beb3ada4";
 const imgAddIcon = "https://www.figma.com/api/mcp/asset/af134ace-722d-45e7-b83a-2cf79b91979c";
-const imgArrowDown = "https://www.figma.com/api/mcp/asset/640b0cb3-cd3b-45ce-8eca-d0bf9d875693";
 const imgPenIcon = "https://www.figma.com/api/mcp/asset/dae73ba2-1d33-416c-b465-e8bad71c80ad";
-const imgCheckbox = "https://www.figma.com/api/mcp/asset/418834ed-eadf-4390-bb71-ea1fd331afea";
-
-// Checkbox Component
-function Checkbox({ checked = false, onChange }) {
-  return (
-    <button 
-      className="checkbox-button" 
-      onClick={onChange}
-      aria-label="Toggle task completion"
-    >
-      <div className="checkbox-inner">
-        {checked && <img src={imgCheckbox} alt="" />}
-      </div>
-    </button>
-  );
-}
-
-// Calendar Day Component
-function CalendarDay({ day, date, hasStreak = false, isToday = false }) {
-  return (
-    <div className={`calendar-day ${isToday ? 'calendar-day-today' : ''}`}>
-      <div className="calendar-day-content">
-        <p className="calendar-day-label">{day}</p>
-        <p className="calendar-day-number">{date}</p>
-      </div>
-      {hasStreak && (
-        <div className="calendar-flame">
-          <img src={imgFlame} alt="streak" />
-        </div>
-      )}
-    </div>
-  );
-}
-
-// Ascension Item Component
-function AscensionItem({ title, completed = false, onToggle, onExpand }) {
-  return (
-    <div className="ascension-item">
-      <Checkbox checked={completed} onChange={onToggle} />
-      <p className="ascension-title">{title}</p>
-      <button 
-        className="ascension-expand" 
-        onClick={onExpand}
-        aria-label="Expand task details"
-      >
-        <img src={imgArrowDown} alt="" />
-      </button>
-    </div>
-  );
-}
 
 export default function Home() {
   const [ascensions, setAscensions] = useState([
     { id: 1, title: "Workout for 30 mins", completed: false },
-    { id: 2, title: "Workout for 30 mins", completed: false },
-    { id: 3, title: "Workout for 30 mins", completed: false },
-    { id: 4, title: "Workout for 30 mins", completed: false },
+    { id: 2, title: "Read for 15 mins", completed: false },
+    { id: 3, title: "Work for 1 hour", completed: false },
+    { id: 4, title: "Workout", completed: false },
   ]);
 
   const toggleAscension = (id) => {

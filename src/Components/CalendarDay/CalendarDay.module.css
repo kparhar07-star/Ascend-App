@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Calendar Day */
+.calendarDay {
+  @apply flex flex-col items-center justify-between p-0 bg-transparent border-none cursor-pointer min-h-12;
+}
+
+.calendarDayToday {
+  @apply bg-(--cardBackground) rounded-2xl py-2.5 px-5 gap-2.5;
+}
+
+.calendarDayContent {
+  @apply flex flex-col items-center justify-between h-12;
+}
+
+.calendarDayLabel {
+  @apply text-lg text-(--textColorPrimary) m-0 ;
+}
+
+.calendarDayNumber {
+  @apply text-(--textColorPrimary) m-0 text-lg;
+}
+
+
+.calendarFlame {
+  @apply w-6 h-6 flex items-center justify-center;
+}
+
+.calendarFlame img {
+  @apply w-full h-full ;
+}
