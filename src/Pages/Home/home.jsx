@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CalendarDay from '../../Components/CalendarDay/CalendarDay';
 import AscensionItem from '../../Components/AscensionItem/AscensionItem';
 import './home.css';
@@ -23,6 +24,8 @@ export default function Home() {
     ));
   };
 
+  const navigate = useNavigate();
+
   const weekDays = [
     { day: 'Su', date: '1', hasStreak: false, isToday: false },
     { day: 'Mo', date: '2', hasStreak: false, isToday: false },
@@ -41,7 +44,6 @@ export default function Home() {
           <div className="home-header">
             <h1 className="home-greeting">Hello Again!</h1>
           </div>
-
           {/* Wealth and XP Bar */}
           <div className="wealth-xp-container">
             <div className="wealth-display">
@@ -84,7 +86,7 @@ export default function Home() {
         <div className="home-section">
           <div className="section-header">
             <h2 className="section-title">Ascensions</h2>
-            <button className="add-button" aria-label="Add new ascension">
+            <button onClick={() => navigate('/ascension')} className="add-button" aria-label="Add new ascension">
               <img src={imgAddIcon} alt="add" />
             </button>
           </div>
@@ -108,9 +110,10 @@ export default function Home() {
         </div>
 
         {/* Journal Section */}
+
         <div className="home-section">
           <h2 className="section-title">Journal</h2>
-          <button className="journal-button">
+          <button onClick={() => navigate('/journal')} className="journal-button">
             <p className="journal-placeholder">Write about your day...</p>
             <div className="journal-icon">
               <img src={imgPenIcon} alt="write" />
