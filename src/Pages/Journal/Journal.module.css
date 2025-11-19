@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+
+.journalContainer {
+  @apply flex flex-col min-h-screen p-8 ml-64 bg-(--backgroundColor);
+}
+
+
+.title {
+  @apply text-2xl font-semibold text-gray-100;
+}
+
+.addButton {
+  @apply flex items-center justify-center w-9 h-9 rounded-full
+    bg-blue-600 hover:bg-blue-500 active:scale-95 transition-transform;
+}
+
+
+.journalContent {
+  @apply w-full max-w-3xl flex flex-col gap-6 mx-auto;
+}
+
+.inputSection {
+  @apply w-full;
+}
+
+.inputField {
+  @apply w-full bg-gray-800 text-gray-100 placeholder-gray-400 
+    rounded-lg py-3 px-5 focus:outline-none
+    border border-gray-700 focus:border-blue-500 transition-colors;
+}

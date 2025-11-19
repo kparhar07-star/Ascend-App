@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+:root {
+  --primaryColor: #1496DC;
+  --accentColor: #DC143C;
+  --backgroundColor: #191716;
+  --textColorPrimary: #E0E2DB;
+  --textColorSecondary: #AFABA6;
+  --cardBackground: #19171680;
+  --placeholderTextPrimary: #010101b3;
+  --placeholderTextColorSecondary: #ffffffb3;
+  --flameColor: #FAA600;
+  --font: "Inter", sans-serif;  
+}

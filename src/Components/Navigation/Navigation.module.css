@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+.navigation {
+    @apply w-64 h-screen bg-(--backgroundColor) font-(--font) text-(--textColorPrimary) flex flex-col py-5 px-5 gap-20 fixed top-0 left-0;
+}
+.logoContainer {
+    @apply flex items-center gap-5;
+}
+.logoText {
+    @apply font-bold text-3xl;
+}
+.mainLinkContainer {
+    @apply flex flex-col;
+}
+.navList {
+    @apply h-full flex flex-col justify-between;
+}
+.mainLinkContainer{
+    @apply flex flex-col gap-5;
+}
+.navLink {
+    @apply flex items-center gap-5 font-semibold px-4 h-12 rounded-2xl hover:scale-[1.05] transition  duration-300 ease-in-out;
+}
+.active{ 
+    @apply bg-(--primaryColor);
+}
