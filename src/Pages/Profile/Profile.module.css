@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+.profileContainer {
+  @apply ml-64 min-h-screen px-12 py-10;
+  background: var(--backgroundColor);
+  color: var(--textColorPrimary);
+  font-family: var(--font);
+}
+
+.topRow {
+  @apply w-full flex items-center justify-between;
+}
+
+.leftSection {
+  @apply flex items-center gap-6;
+}
+
+.avatar {
+  @apply w-16 h-16 rounded-full flex items-center justify-center;
+  background: var(--cardBackground);
+  border: 2px solid var(--primaryColor);
+}
+
+.statsContainer {}
+
+.statRow {
+  @apply flex items-center gap-3 text-sm;
+}
+
+.coin {
+  color: var(--flameColor);
+}
+
+.gem {
+  color: var(--primaryColor);
+}
+
+.rightSection {
+  @apply flex flex-col items-end gap-2;
+}
+
+.username {
+  @apply text-lg font-semibold;
+  color: var(--textColorPrimary);
+}
+
+.xpContainer {
+  @apply flex items-center gap-3;
+}
+
+.xpBar {
+  @apply w-40 h-3 rounded-full;
+  background: #2b2b2b;
+  overflow: hidden;
+}
+
+.xpFill {
+  @apply h-full;
+  background: var(--primaryColor);
+  width: 90%; /* 900/1000 */
+}
+
+.xpText {
+  @apply text-sm;
+  color: var(--textColorSecondary);
+}
+
+.achievementsSection {
+  @apply mt-12;
+}
+
+.achievementsHeader {
+  @apply flex items-center justify-between mb-6;
+}
+
+.achievementsTitle {
+  @apply text-xl font-semibold;
+  color: var(--textColorPrimary);
+}
+
+.progressText {
+  @apply text-sm;
+  color: var(--textColorSecondary);
+}
+
+.achievementsGrid {
+  @apply grid grid-cols-5 gap-6;
+}
+
+.achievementCard {
+  @apply w-20 h-20 rounded-xl flex items-center justify-center text-3xl transition;
+  background: var(--cardBackground);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.unlocked {
+  border: 2px solid var(--primaryColor);
+}
+
+.lockIcon {
+  color: var(--textColorPrimary);
+  opacity: 0.85;
+}
+
+.flameIcon {
+  color: var(--flameColor);
+}
+
+.trophyIcon {
+  color: var(--primaryColor);
+}
