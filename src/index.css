@@ -6,9 +6,16 @@
   --backgroundColor: #191716;
   --textColorPrimary: #E0E2DB;
   --textColorSecondary: #AFABA6;
-  --cardBackground: #19171680;
+  --cardBackground: #000000;
   --placeholderTextPrimary: #010101b3;
   --placeholderTextColorSecondary: #ffffffb3;
   --flameColor: #FAA600;
   --font: "Inter", sans-serif;  
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family : var(--font);
+  color: var(--textColorPrimary);
 }

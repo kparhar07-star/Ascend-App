@@ -6,7 +6,7 @@ function Navigation() {
         <nav className={styles.navigation}>
             <NavLink to="/" className={styles.logoContainer}>
                 <img src="/Logo.svg" alt="Ascend Logo" className={styles.logoImage} />
-                <h1 className={styles.logoText}>Ascend</h1>
+                <h1 className={styles.logoText}>ASCEND</h1>
             </NavLink>
             <ul className={styles.navList}>
                 <div className={styles.mainLinkContainer}>

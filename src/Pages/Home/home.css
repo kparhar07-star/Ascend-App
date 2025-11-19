@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Home Container */
+.home-container {
+  @apply bg-(--backgroundColor) flex flex-col items-center justify-between p-5 w-full h-screen py-5 px-15;
+}
+
+.home-content {
+  @apply flex flex-col items-center justify-start w-full max-w-full overflow-y-auto overflow-x-hidden pb-10 flex-1;
+}
+
+.home-section {
+  @apply flex w-full flex-col gap-7.5 max-w-155 min-w-80.5 py-5 px-10;
+}
+
+/* Header */
+.home-header {
+  @apply flex items-center justify-between w-full;
+}
+
+.home-greeting {
+  @apply font-medium text-4xl;
+}
+
+/* Wealth and XP */
+.wealth-xp-container {
+  @apply w-full flex items-center justify-between;
+}
+
+.wealth-display {
+  @apply flex items-center justify-between gap-5 w-28.5;
+}
+
+.wealth-item {
+  @apply flex items-center gap-1.25;
+}
+
+.wealth-icon {
+  @apply w-5 h-5 flex items-center justify-center;
+}
+
+.wealth-icon img {
+  @apply w-full h-full object-contain;
+}
+
+/* XP Bar */
+.xp-bar {
+  @apply bg-(--cardBackground) h-5 w-40.75 rounded-2xl overflow-hidden flex items-center;
+}
+
+.xp-progress {
+  @apply bg-(--primaryColor) h-full rounded-2xl w-[90%] flex items-center justify-center;
+}
+
+.xp-text {
+  @apply text-sm;
+}
+
+/* Streak Calendar */
+.streak-calendar {
+  @apply flex flex-wrap gap-6 justify-between w-full py-1.25;
+}
+
+/* Section Header */
+.section-header {
+  @apply flex items-center justify-between w-full;
+}
+
+.section-title {
+  @apply text-2xl font-medium;
+}
+
+.add-button {
+  @apply flex items-center justify-center border-none cursor-pointer w-5 h-5;
+}
+
+.add-button img {
+  @apply w-full h-full object-contain;
+}
+
+/* Ascensions */
+.ascension-quote {
+  @apply font-medium italic w-full;
+}
+
+.quote-highlight {
+  @apply text-(--primaryColor)
+}
+
+.ascensions-list {
+  @apply flex flex-col gap-5 w-full;
+}
+
+/* Journal Section */
+.journal-button {
+  @apply bg-(--cardBackground) flex items-center justify-between py-3 px-5 rounded-2xl w-full cursor-pointer;
+}
+
+.journal-placeholder {
+  @apply text-(--placeholderTextColorSecondary);
+}
+
+.journal-icon {
+  @apply flex items-center justify-center w-5 h-5;
+}
+
+.journal-icon img {
+  @apply w-full h-full object-contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    @apply px-5 py-5;
+  }
+  
+  .home-section {
+    @apply px-5 py-5;
+  }
+}
