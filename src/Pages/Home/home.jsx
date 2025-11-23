@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CalendarDay from '../../Components/CalendarDay/CalendarDay';
 import AscensionItem from '../../Components/AscensionItem/AscensionItem';
+import JournalInput from '../../Components/JournalInput/JournalInput';
 import './home.css';
 
 // Image URLs from Figma
@@ -111,15 +112,7 @@ export default function Home() {
 
         {/* Journal Section */}
 
-        <div className="home-section">
-          <h2 className="section-title">Journal</h2>
-          <button onClick={() => navigate('/journal')} className="journal-button">
-            <p className="journal-placeholder">Write about your day...</p>
-            <div className="journal-icon">
-              <img src={imgPenIcon} alt="write" />
-            </div>
-          </button>
-        </div>
+        <JournalInput />
       </div>
     </div>
   );
