@@ -1,6 +1,6 @@
 
 import { useNavigate } from 'react-router-dom';
-const imgPenIcon = "https://www.figma.com/api/mcp/asset/dae73ba2-1d33-416c-b465-e8bad71c80ad";
+import penIcon from '../../assets/pen.svg';
 
 export default function JournalInput() {
     const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default function JournalInput() {
           <button onClick={() => navigate('/journal')} className="journal-button">
             <p className="journal-placeholder">Write about your day...</p>
             <div className="journal-icon">
-              <img src={imgPenIcon} alt="write" />
+              <img src={penIcon} alt="write" />
             </div>
           </button>
         </div>

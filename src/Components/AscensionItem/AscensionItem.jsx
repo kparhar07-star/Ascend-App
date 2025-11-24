@@ -1,22 +1,12 @@
-import Checkbox from '../Checkbox/Checkbox';
+import { useState } from "react";
 import styles from './AscensionItem.module.css';
 
-const imgArrowDown = "https://www.figma.com/api/mcp/asset/640b0cb3-cd3b-45ce-8eca-d0bf9d875693";
+export default  function AscensionItem(){
+    const [isCompleted, setIsCompleted] = useState(false);
 
-function AscensionItem({ title, completed = false, onToggle, onExpand }) {
-  return (
-    <div className={styles.ascensionItem}>
-      <Checkbox checked={completed} onChange={onToggle} />
-      <p className={styles.ascensionTitle}>{title}</p>
-      <button 
-        className={styles.ascensionExpand} 
-        onClick={onExpand}
-        aria-label="Expand task details"
-      >
-        <img src={imgArrowDown} alt="" />
-      </button>
-    </div>
-  );
+    return (
+        <div className={styles.ascensionItem}>
+            
+        </div>
+    );
 }
-
-export default AscensionItem;

@@ -1,31 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CalendarDay from '../../Components/CalendarDay/CalendarDay';
-import AscensionItem from '../../Components/AscensionItem/AscensionItem';
 import JournalInput from '../../Components/JournalInput/JournalInput';
 import './home.css';
 
-// Image URLs from Figma
-const imgCoins = "https://www.figma.com/api/mcp/asset/8c501c74-de50-4cfc-996c-1719498c5c21";
-const imgDiamonds = "https://www.figma.com/api/mcp/asset/e86bfb14-14ee-4444-b68b-cc1c5fb140f9";
-const imgAddIcon = "https://www.figma.com/api/mcp/asset/af134ace-722d-45e7-b83a-2cf79b91979c";
-const imgPenIcon = "https://www.figma.com/api/mcp/asset/dae73ba2-1d33-416c-b465-e8bad71c80ad";
-
 export default function Home() {
-  const [ascensions, setAscensions] = useState([
-    { id: 1, title: "Workout for 30 mins", completed: false },
-    { id: 2, title: "Read for 15 mins", completed: false },
-    { id: 3, title: "Work for 1 hour", completed: false },
-    { id: 4, title: "Workout", completed: false },
-  ]);
-
-  const toggleAscension = (id) => {
-    setAscensions(ascensions.map(a => 
-      a.id === id ? { ...a, completed: !a.completed } : a
-    ));
-  };
-
   const navigate = useNavigate();
+  const imgCoins = "https://www.figma.com/api/mcp/asset/1a3e2f6e-4f3e-4d3e- ninety-four d3-3c4f5e6b7a8b";
+  const imgDiamonds = "https://www.figma.com/api/mcp/asset/2b4c5d6e-7f8a-9b0c-d1e2-f3a4b5c6d7e8";
+  const imgAddIcon = "https://www.figma.com/api/mcp/asset/3c4d5e6f-7a8b-9c0d-e1f2-a3b4c5d6e7f8";
 
   const weekDays = [
     { day: 'Su', date: '1', hasStreak: false, isToday: false },
@@ -87,7 +70,7 @@ export default function Home() {
         <div className="home-section">
           <div className="section-header">
             <h2 className="section-title">Ascensions</h2>
-            <button onClick={() => navigate('/ascension')} className="add-button" aria-label="Add new ascension">
+            <button onClick={() => navigate('/ascensions')} className="add-button" aria-label="Add new ascension">
               <img src={imgAddIcon} alt="add" />
             </button>
           </div>
@@ -98,15 +81,6 @@ export default function Home() {
           </p>
 
           <div className="ascensions-list">
-            {ascensions.map((ascension) => (
-              <AscensionItem
-                key={ascension.id}
-                title={ascension.title}
-                completed={ascension.completed}
-                onToggle={() => toggleAscension(ascension.id)}
-                onExpand={() => console.log('Expand', ascension.id)}
-              />
-            ))}
           </div>
         </div>
 

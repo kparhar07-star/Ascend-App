@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
+import logo from '../../assets/Logo.svg';
 
 function Navigation() {
     return (
         <nav className={styles.navigation}>
             <NavLink to="/" className={styles.logoContainer}>
-                <img src="/Logo.svg" alt="Ascend Logo" className={styles.logoImage} />
+                <img src={logo} alt="Ascend Logo" className={styles.logoImage} />
                 <h1 className={styles.logoText}>ASCEND</h1>
             </NavLink>
             <ul className={styles.navList}>
