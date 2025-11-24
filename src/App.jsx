@@ -3,6 +3,7 @@ import Navigation from "./Components/Navigation/Navigation.jsx";
 import Home from "./Pages/Home/home.jsx";
 import Journal from "./Pages/Journal/Journal.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
+import Ascension from "./Pages/Ascensions/Ascension.jsx";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/ascensions" element={<Ascension />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>

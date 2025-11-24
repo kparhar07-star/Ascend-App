@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.ascensionContainer {
+    @apply ml-64 min-h-screen p-8 bg-(--backgroundColor) text-(--textColorPrimary) flex flex-col gap-5;
+}
+
+.header {
+    @apply text-2xl font-medium;
+}

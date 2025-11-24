@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.inputContainer {
+    @apply w-full mx-auto max-w-152 bg-(--cardBackground) text-(--textColorPrimary) p-4 rounded-2xl border-none outline-none text-base flex flex-col gap-4 items-center;
+}
+
+.inputWrapper {
+    @apply relative w-full mx-auto max-w-152 bg-(--cardBackground) text-(--textColorPrimary) rounded-2xl border-none outline-none text-base placeholder:text-(--placeholderTextColorSecondary) flex items-center justify-between cursor-pointer; 
+}
+.input{
+    @apply w-full bg-(--cardBackground) text-(--textColorPrimary) border-none outline-none text-base placeholder:text-(--placeholderTextColorSecondary);
+}
+.input:focus {
+    @apply border-none;
+}
+.currencyContainer {
+    @apply flex items-center gap-2 text-sm font-medium text-(--textColorPrimary);
+}
+.controlsContainer {
+    @apply flex flex-col gap-4 w-full overflow-hidden transition-all duration-500 ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.expanded {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+}
