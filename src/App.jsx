@@ -15,6 +15,9 @@ function App() {
   const [userStats, setUserStats] = useState({ coins: 100, diamonds: 20, exp: 0, level: 1 });
   const [dailyActivity, setDailyActivity] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Check active session
@@ -48,6 +51,42 @@ function App() {
       setDailyActivity([]);
     }
   }, [session]);
+
+  // Handle responsive navigation
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 600);
+      
+      if (width < 800) {
+        setIsNavCollapsed(true);
+      } else {
+        setIsNavCollapsed(false);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleNav = () => {
+    if (isMobile) {
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    } else {
+      setIsNavCollapsed(!isNavCollapsed);
+    }
+  };
+
+  const handleNavItemClick = () => {
+    if (isMobile) {
+      setIsMobileMenuOpen(false);
+    } else if (window.innerWidth <= 1000) {
+      setIsNavCollapsed(true);
+    }
+  };
 
   const fetchDailyActivity = async () => {
     const today = new Date();
@@ -323,36 +362,61 @@ function App() {
       {!session ? (
         <Auth />
       ) : (
-        <>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<Home ascensions={ascensions} onDelete={deleteAscension} onToggle={toggleAscensionComplete} userStats={userStats} dailyActivity={dailyActivity} />} />
-            <Route 
-              path="/ascensions" 
-              element={
-                <Ascension 
-                  ascensions={ascensions} 
-                  onAdd={addAscension} 
-                  onDelete={deleteAscension} 
-                  onToggle={toggleAscensionComplete}
-                />
-              } 
+        <div className="flex min-h-screen bg-[#191716]">
+          {/* Mobile Hamburger Button */}
+          {isMobile && !isMobileMenuOpen && (
+            <button 
+              onClick={toggleNav} 
+              className="fixed top-5 left-5 z-50 bg-transparent border-none cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="#E0E2DB"/>
+              </svg>
+            </button>
+          )}
+
+          {/* Navigation Sidebar */}
+          <div style={{ display: isMobile && !isMobileMenuOpen ? 'none' : 'block' }}>
+            <Navigation 
+              isCollapsed={isMobile ? true : isNavCollapsed} 
+              toggleNav={toggleNav} 
+              onNavItemClick={handleNavItemClick}
             />
-            <Route 
-              path="/journal" 
-              element={
-                <Journal 
-                  entries={journalEntries} 
-                  onAdd={addJournalEntry} 
-                  onDelete={deleteJournalEntry} 
-                  onUpdate={updateJournalEntry}
-                />
-              } 
-            />
-            <Route path="/profile" element={<Profile session={session} userStats={userStats} />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </>
+          </div>
+
+          <main 
+            className="flex-1 transition-all duration-300 ease-in-out flex flex-col"
+            style={{ marginLeft: isMobile ? '0' : (isNavCollapsed ? '5rem' : '16rem') }}
+          >
+            <Routes>
+              <Route path="/" element={<Home ascensions={ascensions} onDelete={deleteAscension} onToggle={toggleAscensionComplete} dailyActivity={dailyActivity} userStats={userStats} />} />
+              <Route 
+                path="/ascensions" 
+                element={
+                  <Ascension 
+                    ascensions={ascensions} 
+                    onAdd={addAscension} 
+                    onDelete={deleteAscension} 
+                    onToggle={toggleAscensionComplete}
+                  />
+                } 
+              />
+              <Route 
+                path="/journal" 
+                element={
+                  <Journal 
+                    entries={journalEntries} 
+                    onAdd={addJournalEntry} 
+                    onDelete={deleteJournalEntry} 
+                    onUpdate={updateJournalEntry}
+                  />
+                } 
+              />
+              <Route path="/profile" element={<Profile session={session} userStats={userStats} />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+        </div>
       )}
     </BrowserRouter>
   );
