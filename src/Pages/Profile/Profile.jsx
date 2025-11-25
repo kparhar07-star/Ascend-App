@@ -1,6 +1,11 @@
+import { supabase } from "../../supabaseClient";
 import styles from "./Profile.module.css";
 
-export default function Profile() {
+export default function Profile({ session, userStats }) {
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+  };
+
   return (
     <div className={styles.profileContainer}>
 
@@ -14,24 +19,33 @@ export default function Profile() {
           <div className={styles.statsContainer}>
             <div className={styles.statRow}>
               <span className={styles.coin}>🪙</span>
-              <span>100</span>
+              <span>{userStats?.coins || 0}</span>
 
               <span className={styles.gem}>💠</span>
-              <span>20</span>
+              <span>{userStats?.diamonds || 0}</span>
             </div>
           </div>
         </div>
 
         <div className={styles.rightSection}>
-          <p className={styles.username}>Steve</p>
+          <p className={styles.username}>{session?.user?.email || 'User'}</p>
 
           <div className={styles.xpContainer}>
             <div className={styles.xpBar}>
-              <div className={styles.xpFill}></div>
+              <div className={styles.xpFill} style={{ width: `${Math.min(100, ((userStats?.exp || 0) / 1000) * 100)}%` }}></div>
             </div>
-            <span className={styles.xpText}>900/1000</span>
+            <span className={styles.xpText}>{userStats?.exp || 0}/1000</span>
           </div>
         </div>
+      </div>
+
+      <div className="w-full flex justify-center mt-4">
+        <button 
+          onClick={handleSignOut}
+          className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
+        >
+          Sign Out
+        </button>
       </div>
 
       {/* --- SECTION B: ACHIEVEMENTS --- */}

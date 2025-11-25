@@ -1,28 +1,16 @@
 import { useState } from "react";
 import styles from "./Journal.module.css";
 
-export default function Journal() {
+export default function Journal({ entries, onAdd, onDelete, onUpdate }) {
   const [entry, setEntry] = useState("");
-  const [entries, setEntries] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
 
   const handleAddEntry = () => {
     if (entry.trim()) {
-      setEntries(prev => [
-        ...prev,
-        {
-          id: Date.now(),
-          text: entry,
-          date: new Date().toLocaleDateString()
-        }
-      ]);
+      onAdd(entry);
       setEntry("");
     }
-  };
-
-  const handleDelete = (id) => {
-    setEntries(prev => prev.filter(item => item.id !== id));
   };
 
   const startEditing = (id, text) => {
@@ -31,11 +19,7 @@ export default function Journal() {
   };
 
   const saveEdit = () => {
-    setEntries(prev =>
-      prev.map(item =>
-        item.id === editingId ? { ...item, text: editingText } : item
-      )
-    );
+    onUpdate(editingId, editingText);
     setEditingId(null);
     setEditingText("");
   };
@@ -43,6 +27,11 @@ export default function Journal() {
   const cancelEdit = () => {
     setEditingId(null);
     setEditingText("");
+  };
+
+  const formatDate = (isoString) => {
+    if (!isoString) return '';
+    return new Date(isoString).toLocaleDateString();
   };
 
   return (
@@ -74,7 +63,7 @@ export default function Journal() {
      </div>
      {/* Entries */}
      <div className="space-y-4">
-       {entries.map((e) => (
+       {entries && entries.map((e) => (
          <div
            key={e.id}
            className="bg-gray-800 border border-gray-700 rounded-lg p-4 flex justify-between items-start"
@@ -88,8 +77,8 @@ export default function Journal() {
                />
              ) : (
                <>
-                 <p className="text-gray-100">{e.text}</p>
-                 <span className="text-gray-400 text-sm">{e.date}</span>
+                 <p className="text-gray-100">{e.content}</p>
+                 <span className="text-gray-400 text-sm">{formatDate(e.created_at)}</span>
                </>
              )}
            </div>
@@ -112,13 +101,13 @@ export default function Journal() {
              ) : (
                <>
                  <button
-                   onClick={() => startEditing(e.id, e.text)}
+                   onClick={() => startEditing(e.id, e.content)}
                    className="px-2 py-1 rounded-md bg-blue-600/80 hover:bg-blue-600 text-white text-xs font-medium transition"
                  >
                    Edit
                  </button>
                  <button
-                   onClick={() => handleDelete(e.id)}
+                   onClick={() => onDelete(e.id)}
                    className="px-2 py-1 rounded-md bg-red-600/80 hover:bg-red-600 text-white text-xs font-semibold transition"
                  >
                    ✕
@@ -128,7 +117,7 @@ export default function Journal() {
            </div>
          </div>
        ))}
-       {entries.length === 0 && (
+       {(!entries || entries.length === 0) && (
          <p className="text-gray-500 text-sm">
          No journal entries yet.
        </p>
