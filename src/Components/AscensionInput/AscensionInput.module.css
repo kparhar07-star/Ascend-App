@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 .inputContainer {
-    @apply w-full mx-auto max-w-152 bg-(--cardBackground) text-(--textColorPrimary) p-4 rounded-2xl border-none outline-none text-base flex flex-col gap-4 items-center;
+    @apply w-full bg-(--cardBackground) text-(--textColorPrimary) p-4 rounded-2xl border-none outline-none text-base flex flex-col gap-4 items-center;
 }
 
 .inputWrapper {
-    @apply relative w-full mx-auto max-w-152 bg-(--cardBackground) text-(--textColorPrimary) rounded-2xl border-none outline-none text-base placeholder:text-(--placeholderTextColorSecondary) flex items-center justify-between cursor-pointer; 
+    @apply relative w-full bg-(--cardBackground) text-(--textColorPrimary) rounded-2xl border-none outline-none text-base placeholder:text-(--placeholderTextColorSecondary) flex items-center justify-between cursor-pointer; 
 }
 .input{
     @apply w-full bg-(--cardBackground) text-(--textColorPrimary) border-none outline-none text-base placeholder:text-(--placeholderTextColorSecondary);

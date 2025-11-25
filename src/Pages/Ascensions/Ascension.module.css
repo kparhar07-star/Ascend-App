@@ -5,5 +5,11 @@
 }
 
 .header {
-    @apply text-2xl font-medium;
+    @apply text-4xl font-medium;
+}
+.ascensionList{
+    @apply flex flex-col gap-4;
+}
+.ascensionContent {
+    @apply flex flex-col gap-6 w-full mx-auto max-w-155;
 }

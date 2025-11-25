@@ -6,7 +6,7 @@ import StarActive from '../../assets/StarActive.svg';
 import Plus from '../../assets/add.png';
 import Cross from '../../assets/Cross.png';
 
-export default function AscensionInput(){
+export default function AscensionInput({ onAdd }){
     const [inputValue, setInputValue] = useState("");
     const [coins, setCoins] = useState(5);
     const [diamonds, setDiamonds] = useState(2);
@@ -33,6 +33,28 @@ export default function AscensionInput(){
 
     const toggleExpand = () => {
         setIsExpanded(!isExpanded);
+    }
+
+    const handleAdd = () => {
+        if (inputValue.trim() === "") return;
+
+        const newAscension = {
+            title: inputValue,
+            coins,
+            diamonds,
+            exp,
+            isStarActive
+        };
+
+        onAdd(newAscension);
+        
+        // Reset fields
+        setInputValue("");
+        setCoins(5);
+        setDiamonds(2);
+        setExp(20);
+        setIsStarActive(false);
+        setIsExpanded(false);
     }
 
     return (
@@ -79,7 +101,7 @@ export default function AscensionInput(){
                         alt="Star Icon" 
                         style={{ cursor: 'pointer' }}
                     />
-                    <button className ="bg-(--primaryColor) w-8 py-2 rounded-xl flex items-center justify-center"><img src={Plus} alt="Plus Icon" /></button>
+                    <button onClick={handleAdd} className ="bg-(--primaryColor) w-8 py-2 rounded-xl flex items-center justify-center"><img src={Plus} alt="Plus Icon" /></button>
                 </div>
             </div>
         </div>
