@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
 .navigation {
-    @apply w-64 h-screen bg-(--backgroundColor) font-(--font) text-(--textColorPrimary) flex flex-col py-5 px-5 gap-20 fixed top-0 left-0;
+    @apply w-64 h-screen bg-(--backgroundColor) font-(--font) text-(--textColorPrimary) flex flex-col py-5 px-5 gap-10 fixed top-0 left-0 transition-all duration-300 ease-in-out z-50;
 }
+
+.navigation.collapsed {
+    @apply w-20 px-2 items-center;
+}
+
+.headerContainer {
+    @apply flex items-center gap-4 w-full;
+}
+
+.collapsed .headerContainer {
+    @apply justify-center;
+}
+
+.menuButton {
+    @apply bg-transparent border-none cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center;
+}
+
 .logoContainer {
-    @apply flex items-center gap-5;
+    @apply flex items-center gap-3 overflow-hidden whitespace-nowrap;
 }
+
+.logoImage {
+    @apply w-8 h-8 object-contain;
+}
+
 .logoText {
-    @apply font-bold text-3xl;
+    @apply font-bold text-2xl;
 }
-.mainLinkContainer {
-    @apply flex flex-col;
-}
+
 .navList {
-    @apply h-full flex flex-col justify-between;
+    @apply h-full flex flex-col justify-between w-full;
 }
+
 .mainLinkContainer{
-    @apply flex flex-col gap-5;
+    @apply flex flex-col gap-2;
 }
+
+.bottomLinkContainer {
+    @apply flex flex-col gap-2;
+}
+
 .navLink {
-    @apply flex items-center gap-5 font-semibold px-4 h-12 rounded-2xl hover:scale-[1.05] transition  duration-300 ease-in-out;
+    @apply flex items-center gap-4 font-semibold px-4 h-12 rounded-2xl hover:bg-white/5 transition-all duration-200 ease-in-out text-gray-400 overflow-hidden whitespace-nowrap;
 }
-.active{ 
-    @apply bg-(--primaryColor);
+
+.collapsed .navLink {
+    @apply justify-center px-0 w-12 h-12 mx-auto;
+}
+
+.navLink:hover {
+    @apply text-white scale-105;
+}
+
+.active { 
+    @apply bg-(--primaryColor) text-white shadow-lg shadow-blue-500/20;
+}
+
+.iconContainer {
+    @apply flex items-center justify-center w-6 h-6 min-w-[24px];
+}
+
+.linkText {
+    @apply transition-opacity duration-200;
 }

@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+.wealthXpContainer {
+  @apply w-full flex items-center justify-between max-w-155 mx-auto;
+}
+
+.wealthDisplay {
+  @apply flex items-center justify-between gap-5 w-28.5;
+}
+
+.wealthItem {
+  @apply flex items-center gap-1.25;
+}
+
+.wealthIcon {
+  @apply w-5 h-5 flex items-center justify-center;
+}
+
+.wealthIcon svg {
+  @apply w-full h-full object-contain;
+}
+
+.wealthValue {
+  @apply text-white font-medium;
+}
+
+.xpBar {
+  @apply bg-[#2A2A2A] h-5 w-40.75 rounded-2xl overflow-hidden relative;
+}
+
+.xpProgress {
+  @apply bg-[#00D0FF] h-full rounded-2xl transition-all duration-500 ease-out;
+}
+
+.xpText {
+  @apply absolute inset-0 flex items-center justify-center text-xs text-white font-bold drop-shadow-md z-10;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wealthXpContainer {
+    @apply px-5;
+  }
+}

@@ -2,9 +2,9 @@ import styles from './CalendarDay.module.css';
 
 const imgFlame = "https://www.figma.com/api/mcp/asset/af99dedf-7567-4c23-b650-8987beb3ada4";
 
-function CalendarDay({ day, date, hasStreak = false, isToday = false }) {
+function CalendarDay({ day, date, hasStreak = false, isToday = false, isSelected = false }) {
   return (
-    <div className={`${styles.calendarDay} ${isToday ? styles.calendarDayToday : ''}`}>
+    <div className={`${styles.calendarDay} ${isSelected ? styles.calendarDaySelected : ''} ${isToday && !isSelected ? styles.calendarDayToday : ''}`}>
       <div className={styles.calendarDayContent}>
         <p className={styles.calendarDayLabel}>{day}</p>
         <p className={styles.calendarDayNumber}>{date}</p>

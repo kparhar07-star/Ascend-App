@@ -9,6 +9,10 @@
   @apply bg-(--cardBackground) rounded-2xl py-2.5 px-5 gap-2.5;
 }
 
+.calendarDaySelected {
+  @apply bg-[#1E1E1E] rounded-3xl py-4 px-4 gap-2 border border-gray-700 shadow-lg transform scale-110 transition-all duration-200;
+}
+
 .calendarDayContent {
   @apply flex flex-col items-center justify-between h-12;
 }
