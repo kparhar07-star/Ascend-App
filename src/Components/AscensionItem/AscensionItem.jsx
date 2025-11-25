@@ -1,15 +1,16 @@
 import { useState } from "react";
 import styles from './AscensionItem.module.css';
 
-export default function AscensionItem({ data, onDelete }) {
-    const [isCompleted, setIsCompleted] = useState(false);
+export default function AscensionItem({ data, onDelete, onToggle }) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     if (!data) return null;
 
     const toggleComplete = (e) => {
         e.stopPropagation();
-        setIsCompleted(!isCompleted);
+        if (onToggle) {
+            onToggle();
+        }
     };
 
     const handleDelete = (e) => {
@@ -24,16 +25,16 @@ export default function AscensionItem({ data, onDelete }) {
             <div className={styles.header} onClick={() => setIsExpanded(!isExpanded)}>
                 <div className="flex items-center gap-3">
                     <div 
-                        className={`${styles.checkbox} ${isCompleted ? styles.checked : ''}`}
+                        className={`${styles.checkbox} ${data.is_completed ? styles.checked : ''}`}
                         onClick={toggleComplete}
                     >
-                        {isCompleted && (
+                        {data.is_completed && (
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10 3L4.5 8.5L2 6" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         )}
                     </div>
-                    <h3 className={`${styles.title} ${isCompleted ? 'line-through text-gray-500' : ''}`}>
+                    <h3 className={`${styles.title} ${data.is_completed ? 'line-through text-gray-500' : ''}`}>
                         {data.title}
                     </h3>
                 </div>

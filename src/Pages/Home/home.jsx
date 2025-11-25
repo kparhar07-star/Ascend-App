@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CalendarDay from '../../Components/CalendarDay/CalendarDay';
 import JournalInput from '../../Components/JournalInput/JournalInput';
@@ -5,18 +6,45 @@ import AscensionItem from '../../Components/AscensionItem/AscensionItem';
 import addImg from '../../assets/add.png';
 import './home.css';
 
-export default function Home({ ascensions, onDelete }) {
+export default function Home({ ascensions, onDelete, onToggle, userStats, dailyActivity }) {
   const navigate = useNavigate();
+  const [selectedDay, setSelectedDay] = useState(null);
 
-  const weekDays = [
-    { day: 'Su', date: '1', hasStreak: false, isToday: false },
-    { day: 'Mo', date: '2', hasStreak: false, isToday: false },
-    { day: 'Tu', date: '3', hasStreak: true, isToday: true },
-    { day: 'We', date: '4', hasStreak: false, isToday: false },
-    { day: 'Th', date: '5', hasStreak: false, isToday: false },
-    { day: 'Fr', date: '6', hasStreak: false, isToday: false },
-    { day: 'Sa', date: '7', hasStreak: false, isToday: false },
-  ];
+  // Generate current week days
+  const getWeekDays = () => {
+    const today = new Date();
+    const currentDay = today.getDay(); // 0 (Sun) - 6 (Sat)
+    const startDate = new Date(today);
+    startDate.setDate(today.getDate() - currentDay); // Go back to Sunday
+
+    const days = [];
+    const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(startDate);
+      date.setDate(startDate.getDate() + i);
+      
+      const dateString = date.toISOString().split('T')[0];
+      const isToday = date.toDateString() === today.toDateString();
+      const activity = dailyActivity?.find(a => a.activity_date === dateString);
+      
+      days.push({
+        day: dayNames[i],
+        date: date.getDate().toString(),
+        fullDate: dateString,
+        isToday: isToday,
+        hasStreak: !!activity,
+        tasks: activity?.completed_tasks || []
+      });
+    }
+    return days;
+  };
+
+  const weekDays = getWeekDays();
+
+  const handleDayClick = (day) => {
+    setSelectedDay(day);
+  };
 
   return (
     <div className="home-container">
@@ -37,7 +65,7 @@ export default function Home({ ascensions, onDelete }) {
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 8.4375C11.25 11.0262 9.15125 13.125 6.5625 13.125C3.97375 13.125 1.875 11.0262 1.875 8.4375C1.875 5.84875 3.97375 3.75 6.5625 3.75C9.15125 3.75 11.25 5.84875 11.25 8.4375ZM10.625 8.4375C10.625 10.6813 8.80625 12.5 6.5625 12.5C4.31875 12.5 2.5 10.6813 2.5 8.4375C2.5 6.19375 4.31875 4.375 6.5625 4.375C8.80625 4.375 10.625 6.19375 10.625 8.4375Z" fill="#FFB411"/>
                   </svg>
                 </div>
-                <p className="wealth-value">100</p>
+                <p className="wealth-value">{userStats?.coins || 0}</p>
               </div>
               <div className="wealth-item">
                 <div className="wealth-icon">
@@ -45,13 +73,13 @@ export default function Home({ ascensions, onDelete }) {
                       <path d="M3.2281 2.7875C3.34695 2.5595 3.52602 2.36845 3.74585 2.23512C3.96569 2.10179 4.21787 2.03128 4.47498 2.03125H10.5256C10.7827 2.03128 11.0349 2.10179 11.2547 2.23512C11.4746 2.36845 11.6536 2.5595 11.7725 2.7875L13.0919 5.31563C13.2216 5.5642 13.2742 5.84591 13.2426 6.12456C13.2111 6.40321 13.097 6.66607 12.915 6.87937L7.85685 12.8044C7.81285 12.8558 7.75822 12.8971 7.69672 12.9255C7.63522 12.9538 7.56831 12.9685 7.5006 12.9685C7.4329 12.9685 7.36599 12.9538 7.30449 12.9255C7.24299 12.8971 7.18836 12.8558 7.14435 12.8044L2.08623 6.87937C1.90409 6.66613 1.78987 6.40331 1.75824 6.12466C1.72661 5.84601 1.77902 5.56426 1.90873 5.31563L3.2281 2.7875ZM4.3406 2.98813L5.6456 5.16125L6.96248 2.96875H4.47498C4.42952 2.96907 4.38431 2.97559 4.3406 2.98813ZM6.47435 5.60188H8.52623L7.49998 3.89375L6.47435 5.60188ZM9.7056 6.53938L8.49498 10.6131L11.9725 6.53938H9.7056ZM6.5056 10.6131L5.2956 6.53938H3.0281L6.5056 10.6131ZM6.2731 6.53938L7.5006 10.6687L8.72748 6.53938H6.2731ZM11.2544 3.82062L10.1844 5.60188H12.1837L11.2544 3.82062ZM10.525 2.96875H8.03748L9.35435 5.16125L10.66 2.98813C10.6161 2.97553 10.5707 2.96901 10.525 2.96875ZM4.81623 5.60188L3.74623 3.82062L2.81685 5.60188H4.81623Z" fill="#00D0FF"/>
                   </svg>
                 </div>
-                <p className="wealth-value">20</p>
+                <p className="wealth-value">{userStats?.diamonds || 0}</p>
               </div>
             </div>
 
             <div className="xp-bar">
-              <div className="xp-progress">
-                <p className="xp-text">900/1000</p>
+              <div className="xp-progress" style={{ width: `${Math.min(100, ((userStats?.exp || 0) / 1000) * 100)}%` }}>
+                <p className="xp-text">{userStats?.exp || 0}/1000</p>
               </div>
             </div>
           </div>
@@ -59,15 +87,51 @@ export default function Home({ ascensions, onDelete }) {
           {/* Streak Calendar */}
           <div className="streak-calendar">
             {weekDays.map((day, index) => (
-              <CalendarDay 
-                key={index}
-                day={day.day}
-                date={day.date}
-                hasStreak={day.hasStreak}
-                isToday={day.isToday}
-              />
+              <div key={index} onClick={() => handleDayClick(day)} className="cursor-pointer transition-transform hover:scale-110">
+                <CalendarDay 
+                  day={day.day}
+                  date={day.date}
+                  hasStreak={day.hasStreak}
+                  isToday={day.isToday}
+                />
+              </div>
             ))}
           </div>
+          
+          {/* Selected Day Tasks Modal */}
+          {selectedDay && (
+            <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={() => setSelectedDay(null)}>
+              <div className="bg-[#1E1E1E] p-6 rounded-2xl max-w-md w-full border border-gray-700 shadow-2xl" onClick={e => e.stopPropagation()}>
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-xl font-bold text-white">
+                    Activity for {new Date(selectedDay.fullDate).toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}
+                  </h3>
+                  <button onClick={() => setSelectedDay(null)} className="text-gray-400 hover:text-white p-2">
+                    ✕
+                  </button>
+                </div>
+                
+                {selectedDay.tasks && selectedDay.tasks.length > 0 ? (
+                  <div className="space-y-3 max-h-[60vh] overflow-y-auto">
+                    {selectedDay.tasks.map((task, idx) => (
+                      <div key={idx} className="bg-[#2A2A2A] p-4 rounded-xl flex justify-between items-center border border-gray-800">
+                        <span className="text-white font-medium">{task.title}</span>
+                        <div className="flex gap-3 text-xs text-gray-400">
+                          {task.coins > 0 && <span className="flex items-center gap-1 text-yellow-400">+{task.coins} 🪙</span>}
+                          {task.exp > 0 && <span className="flex items-center gap-1 text-blue-400">+{task.exp} XP</span>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-8">
+                    <p className="text-gray-500 text-lg">No tasks completed.</p>
+                    <p className="text-gray-600 text-sm mt-2">Rest days are important too!</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Ascensions Section */}
@@ -88,9 +152,10 @@ export default function Home({ ascensions, onDelete }) {
             {ascensions && ascensions.length > 0 ? (
               ascensions.map((ascension, index) => (
                 <AscensionItem 
-                  key={index} 
+                  key={ascension.id || index} 
                   data={ascension} 
-                  onDelete={() => onDelete(index)}
+                  onDelete={() => onDelete(ascension.id)}
+                  onToggle={() => onToggle(ascension.id, ascension.is_completed)}
                 />
               ))
             ) : (
