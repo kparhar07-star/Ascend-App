@@ -2,11 +2,11 @@
 
 /* Home Container */
 .home-container {
-  @apply bg-(--backgroundColor) flex flex-col items-center justify-between p-5 w-full h-screen py-5 px-15;
+  @apply bg-(--backgroundColor) flex flex-col items-center justify-between p-5 w-full h-screen py-5 px-15 ;
 }
 
 .home-content {
-  @apply flex flex-col items-center justify-start w-full max-w-full overflow-y-auto overflow-x-hidden pb-10 flex-1;
+  @apply flex flex-col items-center justify-start w-full overflow-y-auto overflow-x-hidden pb-10 flex-1 max-w-155 mx-auto;
 }
 
 .home-section {

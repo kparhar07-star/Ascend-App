@@ -1,0 +1,32 @@
+ @import "tailwindcss";
+
+.ascensionItemContainer {
+    @apply w-full mx-auto max-w-152 bg-(--cardBackground) text-(--textColorPrimary) rounded-2xl border-none outline-none text-base flex flex-col overflow-hidden transition-all duration-300;
+}
+
+.header {
+    @apply w-full flex justify-between items-center p-4 cursor-pointer;
+}
+
+.checkbox {
+    @apply w-6 h-6 rounded-full border-2 border-[#00D0FF] flex items-center justify-center cursor-pointer transition-colors duration-200;
+}
+
+.checkbox.checked {
+    @apply bg-[#00D0FF];
+}
+
+.title {
+    @apply text-base font-medium;
+}
+
+.details {
+    @apply max-h-0 opacity-0 transition-all duration-300 ease-in-out overflow-hidden px-5 pb-4;
+}
+
+.details.showDetails {
+    @apply max-h-20 opacity-100;
+}
+.currencyContainer {
+    @apply flex items-center gap-2 text-sm font-medium text-(--textColorPrimary);
+}
