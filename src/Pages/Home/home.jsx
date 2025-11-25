@@ -148,6 +148,7 @@ export default function Home({ ascensions, onDelete, onToggle, dailyActivity, us
                         <span className="text-white font-medium">{task.title}</span>
                         <div className="flex gap-3 text-xs text-gray-400">
                           {task.coins > 0 && <span className="flex items-center gap-1 text-yellow-400">+{task.coins} 🪙</span>}
+                          {task.diamonds > 0 && <span className="flex items-center gap-1 text-cyan-300">+{task.diamonds} 💎</span>}
                           {task.exp > 0 && <span className="flex items-center gap-1 text-blue-400">+{task.exp} XP</span>}
                         </div>
                       </div>

@@ -1,7 +1,7 @@
  @import "tailwindcss";
 
 .ascensionItemContainer {
-    @apply w-full mx-auto max-w-152 bg-(--cardBackground) text-(--textColorPrimary) rounded-2xl border-none outline-none text-base flex flex-col overflow-hidden transition-all duration-300;
+    @apply w-full mx-auto max-w-155 bg-(--cardBackground) text-(--textColorPrimary) rounded-2xl border-none outline-none text-base flex flex-col overflow-hidden transition-all duration-300;
 }
 
 .header {

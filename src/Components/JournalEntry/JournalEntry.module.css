@@ -1,0 +1,45 @@
+@reference "../../index.css";
+@import "tailwindcss";
+.entryCard {
+  @apply bg-(--cardBackground) rounded-2xl p-4 mb-3 transition-all duration-300 cursor-pointer max-w-155 w-full;
+}
+
+.header {
+  @apply flex justify-between items-center;
+}
+
+.dateHeading {
+  @apply text-white font-medium text-lg;
+}
+
+.content {
+  @apply mt-3 text-gray-300 text-sm leading-relaxed animate-fade-in;
+}
+
+.actions {
+  @apply flex gap-2 mt-3 justify-end;
+}
+
+.actionButton {
+  @apply text-xs px-3 py-1 rounded-md transition-colors;
+}
+
+.editButton {
+  @apply bg-blue-600/20 text-blue-400 hover:bg-blue-600/30;
+}
+
+.deleteButton {
+  @apply bg-red-600/20 text-red-400 hover:bg-red-600/30;
+}
+
+.editInput {
+  @apply w-full bg-[#2A2A2A] text-white p-2 rounded-lg border border-gray-700 focus:outline-none focus:border-blue-500;
+}
+
+.saveButton {
+  @apply bg-green-600/20 text-green-400 hover:bg-green-600/30;
+}
+
+.cancelButton {
+  @apply bg-gray-600/20 text-gray-400 hover:bg-gray-600/30;
+}

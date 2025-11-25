@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .journalContainer {
-  @apply flex flex-col min-h-screen p-8 bg-(--backgroundColor) pt-12 w-full max-w-155 mx-auto;
+  @apply flex flex-col min-h-screen p-8 bg-(--backgroundColor) pt-15 w-full max-w-155 mx-auto;
 }
 
 .header {
@@ -22,7 +22,7 @@
 }
 
 .inputContainer {
-  @apply w-full bg-(--cardBackground) rounded-full px-6 py-4 flex items-center justify-between border border-transparent focus-within:border-gray-700 transition-colors;
+  @apply w-full bg-(--cardBackground) rounded-xl px-6 py-4 flex items-center justify-between border border-transparent focus-within:border-gray-700 transition-colors;
 }
 
 .inputField {

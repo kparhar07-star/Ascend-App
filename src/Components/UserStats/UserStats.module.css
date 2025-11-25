@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .wealthXpContainer {
-  @apply w-full flex items-center justify-between max-w-155 mx-auto;
+  @apply w-full flex items-center justify-between min-w-80 max-w-155 mx-auto;
 }
 
 .wealthDisplay {
@@ -36,9 +36,3 @@
   @apply absolute inset-0 flex items-center justify-center text-xs text-white font-bold drop-shadow-md z-10;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .wealthXpContainer {
-    @apply px-5;
-  }
-}

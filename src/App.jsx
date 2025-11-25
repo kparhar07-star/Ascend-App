@@ -258,7 +258,13 @@ function App() {
 
       if (!isCompleted) { // Marking as COMPLETE
           if (!currentTasks.some(t => t.id === id)) {
-             currentTasks.push({ id: ascension.id, title: ascension.title, coins: ascension.coins, exp: ascension.exp });
+             currentTasks.push({
+             id: ascension.id,
+             title: ascension.title,
+             coins: ascension.coins,
+             diamonds: ascension.diamonds,
+             exp: ascension.exp
+           });
           }
       } else { // Marking as INCOMPLETE
           currentTasks = currentTasks.filter(t => t.id !== id);
@@ -362,7 +368,7 @@ function App() {
       {!session ? (
         <Auth />
       ) : (
-        <div className="flex min-h-screen bg-[#191716]">
+        <div className="flex min-h-dvh bg-[#191716]">
           {/* Mobile Hamburger Button */}
           {isMobile && !isMobileMenuOpen && (
             <button 

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .profileContainer {
-  @apply w-full max-w-4xl mx-auto p-6 text-white pt-12;
+  @apply w-full max-w-155 mx-auto p-6 text-white pt-15;
 }
 
 /* --- HEADER SECTION --- */

@@ -2,7 +2,7 @@
 
 /* Home Container */
 .home-container {
-  @apply bg-(--backgroundColor) flex flex-col items-center justify-between p-5 w-full h-screen py-5 px-15 overflow-hidden pt-10;
+  @apply bg-(--backgroundColor) flex flex-col items-center justify-between p-5 w-full h-screen py-5 px-15 overflow-hidden pt-15;
 }
 
 .home-content {

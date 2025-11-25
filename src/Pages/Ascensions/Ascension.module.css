@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .ascensionContainer {
-    @apply min-h-screen p-8 bg-(--backgroundColor) text-(--textColorPrimary) pt-12 flex flex-col gap-5 w-full;
+    @apply min-h-screen p-8 bg-(--backgroundColor) text-(--textColorPrimary) pt-15 flex flex-col gap-5 w-full max-w-155 mx-auto;
 }
 
 .header {
