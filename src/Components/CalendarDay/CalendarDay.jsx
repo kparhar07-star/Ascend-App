@@ -1,6 +1,5 @@
 import styles from './CalendarDay.module.css';
-
-const imgFlame = "https://www.figma.com/api/mcp/asset/af99dedf-7567-4c23-b650-8987beb3ada4";
+import flame from '../../assets/flame.svg';
 
 function CalendarDay({ day, date, hasStreak = false, isToday = false, isSelected = false }) {
   return (
@@ -11,7 +10,7 @@ function CalendarDay({ day, date, hasStreak = false, isToday = false, isSelected
       </div>
       {hasStreak && (
         <div className={styles.calendarFlame}>
-          <img src={imgFlame} alt="streak" />
+          <img src={flame} alt="streak" />
         </div>
       )}
     </div>

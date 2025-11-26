@@ -94,6 +94,16 @@ function Navigation({ isCollapsed, toggleNav, onNavItemClick }) {
                             {!isCollapsed && <span className={styles.linkText}>Sign Out</span>}
                         </button>
                     </li>
+                    <li>
+                        <NavLink to="/help" className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink} title={isCollapsed ? "Help" : ""} onClick={onNavItemClick}>
+                            <div className={styles.iconContainer}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V11C11 10.45 11.45 10 12 10C12.55 10 13 9.55 13 9C13 8.45 12.55 8 12 8C11.45 8 11 8.45 11 9H9C9 7.34 10.34 6 12 6C13.66 6 15 7.34 15 9C15 10.11 14.31 11.06 13.36 11.56C13.13 11.7 13 11.96 13 12.22V13Z" fill="#F5F5F3"/>
+                                </svg>
+                            </div>
+                            {!isCollapsed && <span className={styles.linkText}>Help</span>}
+                        </NavLink>
+                    </li>
                 </div>
             </ul>
         </nav>

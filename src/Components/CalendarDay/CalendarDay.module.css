@@ -27,7 +27,7 @@
 
 
 .calendarFlame {
-  @apply w-6 h-6 flex items-center justify-center;
+  @apply w-6 h-6 flex mt-2 items-center justify-center;
 }
 
 .calendarFlame img {

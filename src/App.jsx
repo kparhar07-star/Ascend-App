@@ -6,6 +6,7 @@ import Home from "./Pages/Home/home.jsx";
 import Journal from "./Pages/Journal/Journal.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
 import Ascension from "./Pages/Ascensions/Ascension.jsx";
+import Help from "./Pages/Help/Help.jsx";
 import Auth from "./Pages/Auth/Auth.jsx";
 
 function App() {
@@ -419,6 +420,7 @@ function App() {
                 } 
               />
               <Route path="/profile" element={<Profile session={session} userStats={userStats} />} />
+              <Route path="/help" element={<Help />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
