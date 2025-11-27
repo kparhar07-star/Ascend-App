@@ -2,6 +2,8 @@
 
 Ascend is a gamified personal development application designed to help users track their goals, build habits, and "level up" their lives. By combining productivity tools with RPG-like mechanics, Ascend makes self-improvement engaging and rewarding.
 
+**🔗 Live Demo:** [ascend-app-pi.vercel.app](https://ascend-app-pi.vercel.app)
+
 ## 🎮 Features
 
 - **Gamification System**: Earn Experience Points (XP), Coins, and Diamonds by completing tasks. Track your Level, Health Points (HP), and Stamina.
@@ -17,7 +19,6 @@ Ascend is a gamified personal development application designed to help users tra
 - **Frontend**: React.js, Vite
 - **Styling**: Tailwind CSS (v4)
 - **Routing**: React Router DOM
-- **Animations**: GSAP (GreenSock Animation Platform)
 - **Backend & Database**: Supabase
 
 ## 🤖 AI Implementation Note
