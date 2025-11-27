@@ -3,6 +3,7 @@
 Ascend is a gamified personal development application designed to help users track their goals, build habits, and "level up" their lives. By combining productivity tools with RPG-like mechanics, Ascend makes self-improvement engaging and rewarding.
 
 **🔗 Live Demo:** [ascend-app-pi.vercel.app](https://ascend-app-pi.vercel.app)
+**🔗 Figma Link:** [(https://www.figma.com/design/1TwaGickOb1fAKC8NDaJSF/FDIT-2120-Design?node-id=156-608&t=p6A10Y02WZpwZOs4-1)]
 
 ## 🎮 Features
 
